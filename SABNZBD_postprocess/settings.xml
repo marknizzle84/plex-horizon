@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<Settings>
+    <SABnzbd>
+        <UFCCompletedDownloadsLocation>E:\SABnzbd\Downloads\complete\UFC</UFCCompletedDownloadsLocation>
+    </SABnzbd>
+    <Plex>
+        <UFCDestinationFolder>\\home-nas01\Shared\Videos\Plex_TV_Shows\Ultimate Fighting Championship\Season 1</UFCDestinationFolder>
+    </Plex>
+</Settings>
