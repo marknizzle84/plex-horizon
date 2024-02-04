@@ -1,70 +1,62 @@
-Certainly! Here's a README.md template for your Plex Horizon project in the Windows directory:
+# Plex Horizon - Windows Scripts Collection
 
-```markdown
-# Plex Horizon - Windows Scripts
+## Overview
 
-Plex Horizon is a versatile project that includes a collection of Windows scripts (.ps1) designed to interact seamlessly with Plex, Sabnzbd, Radarr, Sonarr, and Lidarr APIs. These scripts enhance automation, making it easier to manage and optimize your media server setup on Windows.
+Welcome to Plex Horizon's Windows Scripts Collection! This repository houses a set of PowerShell scripts designed to enhance your Plex media server experience on Windows. These scripts automate various tasks related to media management, post-processing, and interaction with external APIs.
 
-## Table of Contents
+## Scripts
 
-- [Introduction](#introduction)
-- [Compatibility](#compatibility)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Scripts Overview](#scripts-overview)
-- [Contribution](#contribution)
-- [Support](#support)
+### 1. SABNZBD Postprocess Scripts
 
-## Introduction
+#### 1.1 UFC Renamer (`ufc-renamer.ps1`)
 
-Plex Horizon streamlines the integration of Plex Media Server with other essential tools like Sabnzbd, Radarr, Sonarr, and Lidarr on Windows. Whether you're looking to automate media downloads, manage your library, or optimize server performance, these Windows scripts provide a comprehensive solution.
+- **Synopsis:** Post-processes UFC downloads from SABnzbd, renaming files and moving them to Plex-friendly locations.
+- **Usage:**
+  ```powershell
+  .\ufc-renamer.ps1
+  ```
+  Customize the `settings.xml` file before executing the script.
 
-## Compatibility
+#### 1.2 Plex API Tool (`plex-api-tool.ps1`)
 
-Plex Horizon for Windows is designed to work seamlessly with the following services:
+- **Synopsis:** Interacts with the Plex API for tasks like identifying unwatched movies, library cleanup, and movie pruning.
+- **Usage:**
+  ```powershell
+  .\plex-api-tool.ps1 -SearchMovie "Movie Title" -UnwatchedLowRatings -UnwatchedOldTimey -CleanupReview -PruneMoviesJob -AllUnwatched
+  ```
+  Adjust parameters and configure the `settings.xml` file before running the script.
 
-- Plex Media Server
-- Sabnzbd
-- Radarr
-- Sonarr
-- Lidarr
+#### 1.3 Radarr API Tool (`radarr-api-tool.ps1`)
 
-Make sure you have these services set up and running before deploying Plex Horizon on Windows.
+- **Synopsis:** Works with the Radarr API to identify, validate, and perform actions on listed movies.
+- **Usage:**
+  ```powershell
+  .\radarr-api-tool.ps1 -SearchMovie "Movie Title" -UpdateMovies -RefreshAllMovies -MarksMovies -ChristinasMovies -TimsMovies -ShowUnmonitoredMovies -DeleteUnMonitored -NZBGeekTrendingMovies
+  ```
+  Customize parameters and configure the `settings.xml` file before executing the script.
 
-## Installation
+#### 1.4 UFC Downloader (`UFC-Downloader.ps1`)
 
-1. Clone this repository:
+- **Synopsis:** Queries NZBGeek for UFC PPV download links, checks SABnzbd history, and adds the NZB for processing.
+- **Usage:**
+  ```powershell
+  .\UFC-Downloader.ps1 -Download
+  ```
+  Ensure the `settings.xml` file is configured with API tokens and server URLs before running the script.
 
-    ```powershell
-    git clone https://github.com/marknizzle84/plex-horizon.git
-    ```
+### 2. UFC Stats Scraper (`ufc-stats-scraper.ps1`)
 
-2. Navigate to the `windows` directory:
+- **Synopsis:** Scrapes UFC stats from the official UFC website and exports them to a CSV file.
+- **Usage:**
+  ```powershell
+  .\ufc-stats-scraper.ps1 -EventID 1000 -OutputFile "UFC_Stats.csv"
+  ```
+  Adjust parameters and customize the `settings.xml` file before running the script.
 
-    ```powershell
-    cd plex-horizon/windows
-    ```
+## Configuration
 
-3. Customize configuration files according to your Windows setup.
+All scripts rely on the `settings.xml` file. Customize this file with required information, such as API tokens, server URLs, and file paths.
 
-## Usage
+## License
 
-Execute the Windows scripts based on your requirements. Refer to the individual script documentation for specific usage instructions.
-
-## Scripts Overview
-
-
-Feel free to explore and adapt these Windows scripts to meet your unique needs.
-
-## Contribution
-
-Contributions are welcome! If you have improvements, additional Windows scripts, or bug fixes, feel free to submit a pull request.
-
-## Support
-
-For assistance or discussions related to Plex Horizon on Windows, please open an issue on the [GitHub repository](https://github.com/marknizzle84/plex-horizon). Your feedback is valuable in enhancing this project.
-
-Happy automating on Windows!
-```
-
-Feel free to customize it further based on your preferences or any specific details you want to highlight.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
