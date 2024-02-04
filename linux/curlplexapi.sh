@@ -8,7 +8,7 @@ do
 done
 
 baseurl="http://192.168.1.61:32400"
-token='whUWzw2_CHyxJkMx76Mj'
+token=$(cat plextoken.pem)
 
 curl -L -X GET "$baseurl/$query" \
 -H 'Accept: application/json' \
