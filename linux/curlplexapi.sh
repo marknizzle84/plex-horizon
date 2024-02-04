@@ -1,4 +1,9 @@
 #/bin/bash
+#titles of unwatched movies query with jq - "./curlplexapi.sh -q library/sections/1/unwatched |jq -r '.[].Metadata[].title' "
+#titles of unwatched tvshow query with jq - "./curlplexapi.sh -q library/sections/2/unwatched |jq -r '.[].Metadata[].title' "
+# select item 3 in array with jq - " ./curlplexapi.sh -q library/sections/1/unwatched |jq -r '.[].Metadata[2]' "
+# give details of all movies between years - "./curlplexapi.sh -q library/sections/1/unwatched |jq -r '.[].Metadata[]| select(.year >= 1935 and .year <= 1969)' "
+# give just titles of all movies between years - "./curlplexapi.sh -q library/sections/1/unwatched |jq -r '.[].Metadata[]| select(.year >= 1935 and .year <= 1969)| .title' "
 
 while getopts "q:" flag
 do
