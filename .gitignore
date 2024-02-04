@@ -1,0 +1,4 @@
+# Ignore .pem files
+*.pem
+
+# Other patterns...
