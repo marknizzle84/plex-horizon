@@ -2,12 +2,12 @@ import requests
 
 url = "http://192.168.1.61:32400/library/sections/2/unwatched"
 with open('plextoken.pem', 'r') as file:
-    my_token = file.read()
+    token = file.read()
 
 payload={}
 headers = {
   'Accept': 'application/json',
-  'X-Plex-Token': my_token
+  'X-Plex-Token': token
 }
 
 response = requests.request("GET", url, headers=headers, data=payload)
