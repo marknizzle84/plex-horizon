@@ -1,17 +1,55 @@
-﻿##############################################################################
-##                           Radarr API Tool                                ##
-##                   Author: marknizzle84@gmail.com                         ## 
-##                            Date: 10.06.2022                              ##
-##############################################################################
- 
+﻿<#
+.SYNOPSIS
+    Radarr API Tool
 
-#SYNOPSIS
-# this script is used identify/validate movies coming in off of lists setup in radar. This tool also has the ability to refresh movies in radarr and delete unmonitored movies from radarr, allowing them to be downloaded again. (burn and turn strategy)
-# This Script uses and Assumes that settings.xml has all required information filled out and is in the same directory as this script. 
-#> 
+.DESCRIPTION
+    This script is used to identify/validate movies coming in off lists set up in Radarr. The tool also has the ability to refresh movies in Radarr and delete unmonitored movies from Radarr, allowing them to be downloaded again (burn and turn strategy).
+    This script uses and assumes that settings.xml has all required information filled out and is in the same directory as this script.
 
-#CHANGELOG
-# 10.06.2022 - Initial Version 
+.PARAMETER SearchMovie
+    Search for a specific movie by title.
+
+.PARAMETER UpdateMovies
+    Update movies in Radarr.
+
+.PARAMETER RefreshAllMovies
+    Refresh information for all movies in Radarr.
+
+.PARAMETER MarksMovies
+    Display movies with the "Marks" tag.
+
+.PARAMETER ChristinasMovies
+    Display movies with the "Christinas" tag.
+
+.PARAMETER TimsMovies
+    Display movies with the "Tims" tag.
+
+.PARAMETER ShowUnmonitoredMovies
+    Show unmonitored movies in Radarr.
+
+.PARAMETER DeleteUnMonitored
+    Delete unmonitored movies from Radarr.
+
+.PARAMETER NZBGeekTrendingMovies
+    Display movies with the "NZBGeek Trending" tag.
+
+.NOTES
+    File Name      : radarr-api-tool.ps1
+    Author         : marknizzle84@gmail.com
+    Prerequisite   : PowerShell, settings.xml in the same directory
+
+.EXAMPLE
+    .\radarr-api-tool.ps1 -SearchMovie "YourMovieTitle"
+    .\radarr-api-tool.ps1 -UpdateMovies
+    .\radarr-api-tool.ps1 -RefreshAllMovies
+    .\radarr-api-tool.ps1 -MarksMovies
+    .\radarr-api-tool.ps1 -ChristinasMovies
+    .\radarr-api-tool.ps1 -TimsMovies
+    .\radarr-api-tool.ps1 -ShowUnmonitoredMovies
+    .\radarr-api-tool.ps1 -DeleteUnMonitored
+    .\radarr-api-tool.ps1 -NZBGeekTrendingMovies
+#>
+
 [CmdletBinding()]
 param (
     [Parameter(Mandatory=$false)][String]$SearchMovie,
@@ -25,7 +63,25 @@ param (
     [Parameter(Mandatory=$false)][Switch]$NZBGeekTrendingMovies
 )
 
-[xml]$Configfile = Get-Content .\settings.xml
+# Rest of your script...
+
+Stop-Transcript
+
+[CmdletBinding()]
+param (
+    [Parameter(Mandatory=$false)][String]$SearchMovie,
+    [Parameter(Mandatory=$false)][Switch]$UpdateMovies,
+    [Parameter(Mandatory=$false)][Switch]$RefreshAllMovies,
+    [Parameter(Mandatory=$false)][Switch]$MarksMovies,
+    [Parameter(Mandatory=$false)][Switch]$ChristinasMovies,
+    [Parameter(Mandatory=$false)][Switch]$TimsMovies,
+    [Parameter(Mandatory=$false)][Switch]$ShowUnmonitoredMovies,
+    [Parameter(Mandatory=$false)][Switch]$DeleteUnMonitored,
+    [Parameter(Mandatory=$false)][Switch]$NZBGeekTrendingMovies
+)
+
+
+[xml]$Configfile[xml]$Configfile  = Get-Content .\XML\settings.xml
 
 ###VARIABLES 
 $RadarrAPIBaseURL = $Configfile.Settings.Radarr.ServerURL

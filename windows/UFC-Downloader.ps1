@@ -1,19 +1,29 @@
-﻿##############################################################################
-##                           Radarr API Tool                                ##
-##                   Author: marknizzle84@gmail.com                         ## 
-##                            Date: 10.06.2022                              ##
-##############################################################################
- 
+﻿<#
+.SYNOPSIS
+    UFC Downloader
 
-#SYNOPSIS
-# this script is used to query NZBGeek for UFC PPVs based on the month and year in the get-date queries. The PPV Strings have to be updated manually and do not account for months where 2 ppvs occur. 
-# If a new PPV is found matching the query on nzbgeek. It is then compared to the download history of SABnzbd. If SABnzbd has no history of downloading the file then the info is sent to SABnzbd to download. 
-# This Script uses and Assumes that settings.xml has all required information filled out and is in the same directory as this script. 
-#> 
+.DESCRIPTION
+    This script is used to download UFC Pay-Per-View (PPV) events from NZBGeek using SABnzbd. It checks the current month and year to determine the corresponding UFC event and searches NZBGeek for the PPV download link.
 
-#CHANGELOG
-# 10.06.2022 - Initial Version 
-#11.15.2022 - updated lines 37-47, Date updates until OCT. 2023 and UFC 291
+.PARAMETER Download
+    Initiates the download of the UFC PPV from NZBGeek using SABnzbd.
+
+.NOTES
+    File Name      : UFC-Downloader.ps1
+    Author         : marknizzle84@gmail.com
+    Prerequisite   : PowerShell, settings.xml in the same directory
+
+.EXAMPLE
+    .\UFC-Downloader.ps1 -Download
+#>
+
+[CmdletBinding()]
+param (
+    [Parameter(Mandatory=$false)][Switch]$Download
+)
+
+# Rest of your script...
+
 
 [CmdletBinding()]
 param (

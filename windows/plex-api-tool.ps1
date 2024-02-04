@@ -1,17 +1,42 @@
-﻿##############################################################################
-##                    Plex Unwatched Movie Cleanup Tool                     ##
-##                   Author: marknizzle84@gmail.com                         ## 
-##                            Date: 10.06.2022                              ##
-##############################################################################
- 
+﻿<#
+.SYNOPSIS
+    Plex Unwatched Movie Cleanup Tool
 
-#SYNOPSIS
-# this script is used identify unwatched movies on plex and cross reference them against timestamps of when the file was uploaded to disk to determine creationdate or when added. If criteria is met it will process deletion. 
-# This Script uses and Assumes that settings.xml has all required information filled out and is in the same directory as this script. 
-#> 
+.DESCRIPTION
+    This script identifies unwatched movies on Plex and cross-references them against timestamps of when the file was uploaded to disk to determine creation date or when added. If criteria are met, it will process deletion. 
+    This Script uses and Assumes that settings.xml has all required information filled out and is in the same directory as this script.
 
-#CHANGELOG
-# 10.06.2022 - Initial Version 
+.PARAMETER SearchMovie
+    Search for a specific movie by title.
+
+.PARAMETER UnwatchedLowRatings
+    Display unwatched movies with low audience ratings.
+
+.PARAMETER UnwatchedOldTimey
+    Display unwatched movies released before 1969.
+
+.PARAMETER AllUnwatched
+    Display all unwatched movies.
+
+.PARAMETER CleanupReview
+    Display movies with potential naming issues.
+
+.PARAMETER PruneMoviesJob
+    Execute a job to prune movies based on specified conditions.
+
+.NOTES
+    File Name      : plex-api-tool.ps1
+    Author         : marknizzle84@gmail.com
+    Prerequisite   : PowerShell, settings.xml in the same directory
+
+.EXAMPLE
+    .\plex-api-tool.ps1 -SearchMovie "YourMovieTitle"
+    .\plex-api-tool.ps1 -UnwatchedLowRatings
+    .\plex-api-tool.ps1 -UnwatchedOldTimey
+    .\plex-api-tool.ps1 -AllUnwatched
+    .\plex-api-tool.ps1 -CleanupReview
+    .\plex-api-tool.ps1 -PruneMoviesJob
+#>
 param (
     [Parameter(Mandatory=$false)][String]$SearchMovie,
     [Parameter(Mandatory=$false)][Switch]$UnwatchedLowRatings,
@@ -21,7 +46,21 @@ param (
     [Parameter(Mandatory=$false)][Switch]$AllUnwatched
 )
 
-[xml]$Configfile = Get-Content .\settings.xml
+# Rest of your script...
+
+Stop-Transcript
+
+param (
+    [Parameter(Mandatory=$false)][String]$SearchMovie,
+    [Parameter(Mandatory=$false)][Switch]$UnwatchedLowRatings,
+    [Parameter(Mandatory=$false)][Switch]$UnwatchedOldTimey,
+    [Parameter(Mandatory=$false)][Switch]$CleanupReview,
+    [Parameter(Mandatory=$false)][Switch]$PruneMoviesJob,
+    [Parameter(Mandatory=$false)][Switch]$AllUnwatched
+)
+
+
+[xml]$Configfile[xml]$Configfile  = Get-Content .\XML\settings.xml
 #### LOGGING #### 
 $logpaths = ("logs", "logs\Plex")
 foreach ($logpath in $logpaths) {

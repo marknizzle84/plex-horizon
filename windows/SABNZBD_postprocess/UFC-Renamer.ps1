@@ -1,20 +1,34 @@
-﻿##############################################################################
-##                    UFC Download Renamer and Copy Tool                    ##
-##                   Author: marknizzle84@gmail.com                         ## 
-##                            Date: 11.10.2022                              ##
-##############################################################################
- 
+﻿<#
+.SYNOPSIS
+    UFC Download Renamer and Copy Tool
+.DESCRIPTION
+    This script is used to post-process UFC downloads. It renames the downloaded fight to match the movie folder name, 
+    appends Season|Episode info to the file name, and moves it to the TV show folder. 
+    This ensures Plex imports it correctly into the UFC folder in TV Shows.
+.PARAMETER None
+    No parameters are required for normal execution. It automatically fetches settings from the 'settings.xml' file.
+.NOTES
+    File: ufc-renamer.ps1
+    Author: marknizzle84@gmail.com
+    Date: 11.10.2022
+    Version: 1.0
+#>
 
-#SYNOPSIS
-# this script is used to post process ufc downloads. It will rename the downloaded fight to match the movie folder name, append Season|Episode info to the file name and movie it over to tv show folder so Plex imports it correctly into UFC folder in TV Shows. 
-# This Script uses and Assumes that settings.xml has all required information filled out and is in the same directory as this script. 
-#> 
+param (
+    # No parameters needed for normal execution.
+)
 
-#CHANGELOG
-# 11.10.2022 - Initial Version 
+<#
+.EXAMPLE
+    .\ufc-renamer.ps1
+    Runs the UFC Renamer script with default settings.
+#>
 
-#### LOGGING #### 
-##
+<#
+.NOTES
+    Customize the script according to your needs. Ensure 'settings.xml' has the correct paths and settings.
+#>
+
 $logpaths = $logpaths = ("logs", "logs\UFC-Renamer")
 foreach ($logpath in $logpaths) {
     if (!(test-path $logpath)) {    
@@ -27,7 +41,7 @@ foreach ($logpath in $logpaths) {
 $transcriptlogpath =  "logs\UFC-Renamer\UFC-Renamer-Transcript$(Get-date -Format -MM-dd-yyyy-hhmm).txt" 
 Start-Transcript -path $transcriptlogpath
 
-[xml]$Configfile = Get-Content .\settings.xml
+[xml]$Configfile = Get-Content .\XML\settings.xml
 
 start-sleep -Seconds 45
 Try{
