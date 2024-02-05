@@ -1,5 +1,6 @@
 #/bin/bash
 # API Reference: https://radarr.video/docs/api/#
+# Get Movies - ./curlradarrapi.sh -q /api/v3/movie |jq .[].title
 
 
 while getopts "q:" flag
