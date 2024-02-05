@@ -1,6 +1,7 @@
 #/bin/bash
 # API Reference: https://radarr.video/docs/api/#
 # Get Movies - ./curlradarrapi.sh -q /api/v3/movie |jq .[].title
+# Get Unmonitored Movies  ./curlradarrapi.sh -q /api/v3/movie |jq -r '.[] |select(.monitored == false)|.title'
 
 
 while getopts "q:" flag
